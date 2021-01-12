@@ -1,0 +1,42 @@
+---
+root-title: Elena's Corner
+lang: en
+---
+
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+  <head>
+    <title>{{ title }} ({{ root-title }})</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/0514044dbd.js" crossorigin="anonymous"></script>
+    <style>{{> partials/stylesheet }}</style>
+    <script>{{> partials/script }}</script>
+  </head>
+  <body class="is-flex is-flex-direction-column">
+    <nav>
+      <h3>Navigation</h3>
+    </nav>
+
+    <main class="is-flex-grow-1">
+      <div class="container">
+        {{{ content }}}
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Elena's Corner</strong> by Elena Franz. <br />
+          The website's content is subject to the following license:
+          <span class="icon-text">
+            <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY NC SA 4.0</a></span>
+            <span class="icon">
+              <i class="fas fa-external-link-alt has-text-info"></i>
+            </span>
+          </span>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

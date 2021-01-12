@@ -1,0 +1,17 @@
+---
+layout: base.hbs
+---
+
+<div>
+  <section class="section" style="border-bottom: 1px solid lightgray;">
+    <h1 class="title">{{ title }}</h1>
+    <div class="tags">
+      {{#each sort tags}}
+        <span class="tag">{{ . }}</span>
+      {{/each}}
+    </div>
+  </section>
+  <section class="section">
+    {{{ content }}}
+  </section>
+</div>
