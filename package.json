@@ -5,16 +5,22 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "DEBUG=homepage npx @11ty/eleventy --serve --input=./src/"
+    "serve": "DEBUG=homepage npx @11ty/eleventy --serve --input=./src/",
+    "deploy": "npx gh-pages -d _site"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Elena F.",
+  "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
-    "bulma": "^0.9.1",
+    "autoprefixer": "^10.2.1",
+    "clean-css": "^4.2.3",
     "debug": "^4.3.1",
-    "sass": "^1.32.2",
-    "uglify-js": "^3.12.4"
+    "gh-pages": "^3.1.0",
+    "postcss": "^8.2.4",
+    "postcss-import": "^14.0.0",
+    "tailwindcss": "^2.0.2",
+    "uglify-js": "^3.12.4",
+    "@tailwindcss/typography": "^0.4.0"
   }
 }

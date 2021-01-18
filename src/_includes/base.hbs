@@ -10,29 +10,33 @@ lang: en
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/0514044dbd.js" crossorigin="anonymous"></script>
-    <style>{{> partials/stylesheet }}</style>
-    <script>{{> partials/script }}</script>
+    <style>
+      {{> partials/stylesheet }}
+    </style>
+    <script>
+      {{> partials/script }}
+    </script>
   </head>
-  <body class="is-flex is-flex-direction-column">
-    <nav>
+  <body class="flex flex-col text-xl">
+    <nav class="pb-3 bg-gray-100">
       <h3>Navigation</h3>
     </nav>
 
-    <main class="is-flex-grow-1">
+    <main class="md:container mx-auto flex-grow">
       <div class="container">
         {{{ content }}}
       </div>
     </main>
 
-    <footer class="footer">
-      <div class="content has-text-centered">
+    <footer class="md:container mx-auto pb-20">
+      <div class="container text-center">
         <p>
           <strong>Elena's Corner</strong> by Elena Franz. <br />
           The website's content is subject to the following license:
-          <span class="icon-text">
-            <span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY NC SA 4.0</a></span>
+          <span class="hover:underline">
+            <span><a class="text-blue-500" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY NC SA 4.0</a></span>
             <span class="icon">
-              <i class="fas fa-external-link-alt has-text-info"></i>
+              <i class="fas fa-external-link-alt text-blue-500"></i>
             </span>
           </span>
         </p>

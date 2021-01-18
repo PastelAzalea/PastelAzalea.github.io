@@ -3,15 +3,25 @@ layout: base.hbs
 ---
 
 <div>
-  <section class="section" style="border-bottom: 1px solid lightgray;">
-    <h1 class="title">{{ title }}</h1>
-    <div class="tags">
-      {{#each sort tags}}
-        <span class="tag">{{ . }}</span>
-      {{/each}}
+  <head>
+    <div class="pb-5 border-b border-gray-300" style="border-bottom: 1px solid #666a86">
+      <div class="flex flex-row items-center pb-3">
+        <div class="text-4xl flex-grow">{{ title }}</div>
+        <div class="text-xl">{{ toLocalDateString page.date }}</div>
+      </div>
+      <div class="text-base">
+        {{#each (sort tags)}}
+          <span class="bg-gray-100 rounded-lg p-1">{{ . }}</span>
+        {{/each}}
+      </div>
     </div>
-  </section>
-  <section class="section">
+  </head>
+
+  <section class="py-5 prose-lg">
     {{{ content }}}
   </section>
+
+  {{#each directories }}
+    {{ . }} <br />
+  {{/each}}
 </div>

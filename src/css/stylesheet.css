@@ -1,0 +1,28 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+  font-family: "cantarellregular";
+  src: url("/assets/web-fonts/cantarell_regular_macroman/Cantarell-Regular-webfont.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "cantarellregular";
+  color: #333333;
+  background-color: #fffbff;
+}
+
+html,
+body {
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}

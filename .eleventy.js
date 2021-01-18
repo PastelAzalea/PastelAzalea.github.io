@@ -1,10 +1,15 @@
-const debug = require("debug")("homepage");
-const sass = require("sass");
+const debug = require("debug")("eleventy-homepage");
+const postcssImporter = require("postcss-import");
+const autoprefixer = require("autoprefixer");
+const tailwindcss = require("tailwindcss");
+const postcss = require("postcss");
+const cleancss = require("clean-css");
 const fs = require("fs");
 const uglifyJS = require("uglify-js");
+const CleanCSS = require("clean-css");
 
 module.exports = function (config) {
-  config.setTemplateFormats(["html", "md", "hbs", "scss"]);
+  config.setTemplateFormats(["html", "md", "hbs"]);
   config.addPassthroughCopy("./src/assets/");
   config.setDataDeepMerge(true);
 
@@ -12,39 +17,29 @@ module.exports = function (config) {
     return value.sort();
   });
 
-  // create global scss file
-  //config.addWatchTarget("./src/scss/");
-  sass.render(
-    {
-      file: "./src/scss/stylesheet.scss",
-      outputStyle: "compressed",
-      includePaths: [
-        "node_modules",
-        "node_modules/bulma/sass/base",
-        "node_modules/bulma/sass/components",
-        "node_modules/bulma/sass/elements",
-        "node_modules/bulma/sass/form",
-        "node_modules/bulma/sass/layout",
-        "node_modules/bulma/sass/columns",
-        "node_modules/bulma/sass/utilities",
-      ],
-    },
-    function (err, result) {
-      if (err) {
-        debug("SCSS Error: %o", err);
-      } else {
-        fs.writeFile(
-          "./src/_includes/partials/stylesheet.hbs",
-          result.css.toString(),
-          function (ex) {
-            if (ex) {
-              debug("SCSS Error: %o", ex);
-            }
-          }
-        );
-      }
-    }
-  );
+  config.addFilter("toLocalDateString", function (value) {
+    return value.toLocaleDateString(undefined, {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  });
+
+  const css = fs.readFileSync("./src/css/stylesheet.css").toString();
+  postcss([postcssImporter, tailwindcss, autoprefixer])
+    .process(css, {
+      from: "./src/css/stylesheet.css",
+      to: "./src/_includes/partials/stylesheet.hbs",
+    })
+    .then((result) => {
+      fs.writeFileSync(
+        "./src/_includes/partials/stylesheet.hbs",
+        new CleanCSS({}).minify(result.css).styles
+      );
+    })
+    .catch((error) => {
+      debug("PostCSS Error: %o", error);
+    });
 
   // create global script file
   const jsContent = fs.readFileSync("./src/script/script.js").toString();
@@ -54,4 +49,6 @@ module.exports = function (config) {
   } else {
     debug("Uglify-js Error: %o", minified.error);
   }
+
+  debug("finished .eleventy.js");
 };
