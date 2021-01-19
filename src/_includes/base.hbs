@@ -10,25 +10,26 @@ lang: en
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/0514044dbd.js" crossorigin="anonymous"></script>
-    <style>
-      {{> partials/stylesheet }}
-    </style>
+    <style>{{> partials/stylesheet }}</style>
     <script>
       {{> partials/script }}
     </script>
   </head>
   <body class="flex flex-col text-xl">
-    <nav class="pb-3 bg-gray-100">
-      <h3>Navigation</h3>
+    <nav class="py-2 mb-2 bg-gray-100 shadow-md">
+      <div class="md:container mx-auto flex text-lg bg-gray-100 text-blue-500 justify-end space-x-2">
+        <a class="bg-gray-100 hover:underline" href="#">About</a>
+        <a class="bg-gray-100 hover:underline" href="#">Blog</a>
+      </div>
     </nav>
 
-    <main class="md:container mx-auto flex-grow">
+    <main class="mt-2 md:container mx-auto flex-grow">
       <div class="container">
         {{{ content }}}
       </div>
     </main>
 
-    <footer class="md:container mx-auto pb-20">
+    <footer class="md:container mx-auto pb-20 text-base">
       <div class="container text-center">
         <p>
           <strong>Elena's Corner</strong> by Elena Franz. <br />

@@ -3,7 +3,6 @@ const postcssImporter = require("postcss-import");
 const autoprefixer = require("autoprefixer");
 const tailwindcss = require("tailwindcss");
 const postcss = require("postcss");
-const cleancss = require("clean-css");
 const fs = require("fs");
 const uglifyJS = require("uglify-js");
 const CleanCSS = require("clean-css");
@@ -18,7 +17,7 @@ module.exports = function (config) {
   });
 
   config.addFilter("toLocalDateString", function (value) {
-    return value.toLocaleDateString(undefined, {
+    return value.toLocaleDateString("en-UK", {
       day: "numeric",
       month: "long",
       year: "numeric",
